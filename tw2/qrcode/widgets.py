@@ -1,13 +1,9 @@
 import tw2.core as twc
 import tw2.jquery
 
-import tw2.jquery
-import tw2.jquery.base as tw2_jq_c_b
-import tw2.jqplugins.ui.base as tw2_jq_ui
-
 import base
 
-class QRCodeWidget(tw2_jq_ui.JQueryUIWidget):
+class QRCodeWidget(twc.Widget):
     '''
     Creates a QRCode using client side javascript.
     '''
@@ -36,5 +32,6 @@ class QRCodeWidget(tw2_jq_ui.JQueryUIWidget):
         if self.level <= 0 and self.level > 4:
             self.level = 4
 
+        self.selector = self.attrs['id'].replace(':', '\\\\:') # grabed from tw2.jqplugins.ui
         self.width = str(self.width)
         self.level = str(self.level)
