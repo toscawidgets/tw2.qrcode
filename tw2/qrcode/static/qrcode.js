@@ -1033,3 +1033,24 @@ QRBitBuffer.prototype = {
 		this.length++;
 	}
 };
+
+function draw_qrcode(id, text, level, correction_level, width) {
+    var qr = new QRCode(level, QRErrorCorrectLevel.H);
+    qr.addData(text);
+    qr.make();
+    item = $("#"+id);
+    item.empty();
+    var pix_width = Math.floor(width / qr.getModuleCount());
+
+    for (var r = 0; r < qr.getModuleCount(); r++) {
+        item.append("<div id='"+id+"-"+r+"' class='qr-row'>");
+        for (var c = 0; c < qr.getModuleCount(); c++) {
+            if (qr.isDark(r, c) ) {
+                item.append("<div class='qr-pixel dark' style='width:"+pix_width+"px; height:"+pix_width+"px;'></div>");
+            } else {
+                item.append("<div class='qr-pixel light' style='width:"+pix_width+"px; height:"+pix_width+"px;'></div>");
+            }
+        item.append("</div>");
+        }
+    }
+}

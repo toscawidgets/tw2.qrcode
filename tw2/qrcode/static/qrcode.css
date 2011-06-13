@@ -1,0 +1,24 @@
+.qr-code {
+    background-color:#fff;
+}
+
+.qr-pixel {
+    float:left;
+}
+
+.qr-row {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    clear: left;
+}
+
+.light {
+    background-color: #fff;
+    color: #fff;
+}
+
+.dark {
+    background-color: #000;
+    color: #000;
+}

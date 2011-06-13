@@ -8,7 +8,10 @@ See http://toscawidgets.org/documentation/WidgetBrowser for more information
 
 import widgets
 
-class DemoQrcode(widgets.Qrcode):
+class DemoQrcode(widgets.QRCodeWidget):
     # Provide default parameters, value, etc... here
     # default = <some-default-value>
-    pass
+    id = "demoqr"
+    data = "Test text qrcode. This has a lot of data in it."
+    level = 9
+    width = 300

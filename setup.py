@@ -1,17 +1,22 @@
 from setuptools import setup, find_packages
 
+_extra_mako = ["Mako >= 0.1.1"]
 setup(
-    name='',
-    version='',
-    description='',
-    author='',
-    author_email='',
-    url='',
+    name='tw2.qrcode',
+    version='2.0.1b',
+    description='Client-side QR Code Widget',
+    author='Greg Jurman',
+    author_email='gdj2214@rit.edu',
+    license='MIT',
+    url='http://github.com/gregjurman/tw2.qrcode',
     install_requires=[
-        "tw2.core",
-        ## Add other requirements here
-        # "Genshi",
+        "tw2.core>=2.0b2",
+        "tw2.jquery",
+        "tw2.jqplugins.ui",
         ],
+    extras_require={
+        'mako': _extra_mako,
+        },
     packages=find_packages(exclude=['ez_setup', 'tests']),
     namespace_packages = ['tw2'],
     zip_safe=False,
@@ -24,6 +29,7 @@ setup(
     """,
     keywords = [
         'toscawidgets.widgets',
+        'qrcode',
     ],
     classifiers = [
         'Development Status :: 3 - Alpha',
