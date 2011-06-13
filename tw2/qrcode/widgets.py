@@ -32,6 +32,9 @@ class QRCodeWidget(twc.Widget):
         if self.level <= 0 and self.level > 4:
             self.level = 4
 
+        if not hasattr(self, 'id') or 'id' not in self.attrs:
+            raise ValueError, 'JQueryWidget must be supplied an id'
+
         self.selector = self.attrs['id'].replace(':', '\\\\:') # grabed from tw2.jqplugins.ui
         self.width = str(self.width)
         self.level = str(self.level)
