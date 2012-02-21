@@ -13,5 +13,4 @@ class DemoQrcode(widgets.QRCodeWidget):
     # default = <some-default-value>
     id = "demoqr"
     data = "Test text qrcode. This has a lot of data in it."
-    level = 9
     width = 300
