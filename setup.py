@@ -17,6 +17,17 @@ setup(
         'mako': _extra_mako,
         },
     packages=find_packages(exclude=['ez_setup', 'tests']),
+    tests_require = [
+        'nose',
+        'BeautifulSoup',
+        'Genshi',
+        'mako',
+        # formencode isn't actually needed, but is just here to patch up
+        # tw2.forms,
+        'formencode',
+        'strainer',
+        'WebTest'
+    ],
     namespace_packages = ['tw2'],
     zip_safe=False,
     include_package_data=True,
