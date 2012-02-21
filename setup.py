@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 _extra_mako = ["Mako >= 0.1.1"]
 setup(
     name='tw2.qrcode',
-    version='2.0.1b',
+    version='2.0.2',
     description='Client-side QR Code Widget',
     author='Greg Jurman',
     author_email='gdj2214@rit.edu',
