@@ -20,25 +20,30 @@ class QRCodeWidget(twc.Widget):
 
     correction_level = twc.Param("(str) QRCode Correction Level. Valid options: H, Q, M, L", default="H")
 
-    level = twc.Param("(int) The size of the QRCode. Valid options: 0-4", default=4)
+    qr_type = twc.Param("(int) The type of QRCode. Valid options: 1 - 40", default=None)
 
     width = twc.Param("(int) The total width of the widget in pixels", default=160)
 
     def prepare(self):
-        if 'None' in str(type(self.data)):
-            raise ValueError, "data parameter must be a string or unicode"
+        if 'str' not in str(type(self.data)):
+            raise ValueError, "QRCodeWidget data parameter must be a string"
 
         super(QRCodeWidget, self).prepare()
         # put code here to run just before the widget is displayed
-        if self.correction_level.upper() not in ['H', 'Q', 'M', 'L']:
-            self.correction_level = 'H'
-        if self.level <= 0 and self.level > 4:
-            self.level = 4
+        if 'str' not in str(type(self.correction_level)) and str(self.correction_level).upper() not in ['H', 'Q', 'M', 'L']:
+            raise ValueError, 'QRCodeWidget correction_level must be a string containing one of the following options: H, Q, M, L'
+
+        if 'int' not in str(type(self.qr_type)) or int(self.qr_type) <= 0 and int(self.qr_type) > 40:
+            raise ValueError, "QRCodeWidget qr_type must be between 1 and 40 inclusive"
 
         if not hasattr(self, 'id') or 'id' not in self.attrs:
-            raise ValueError, 'JQueryWidget must be supplied an id'
+            raise ValueError, 'QRCodeWidget must be supplied an id'
 
         self.selector = self.attrs['id'].replace(':', '\\:') # grabed from tw2.jqplugins.ui
-        #self.width = str(self.width)
-        #self.level = str(self.level)
-        self.add_call(base.js_draw_qr(self.selector, self.data, "QRErrorCorrectLevel.%s"%self.correction_level, self.width))
+        self._width = str(self.width)
+
+        self.add_call(base.js_draw_qr(self.selector, 
+            self.data,
+            self.qr_type,
+            twc.js_symbol("QRErrorCorrectLevel.%s"%self.correction_level), 
+            self.width))
