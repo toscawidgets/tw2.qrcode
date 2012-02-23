@@ -1,5 +1,11 @@
 from setuptools import setup, find_packages
 
+# Ridiculous as it may seem, we need to import multiprocessing and
+# logging here in order to get tests to pass smoothly on python 2.7.
+# Thanks RJ!
+import multiprocessing
+import logging
+
 _extra_mako = ["Mako >= 0.1.1"]
 setup(
     name='tw2.qrcode',
