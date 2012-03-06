@@ -14,7 +14,7 @@ setup(
     author='Greg Jurman',
     author_email='gdj2214@rit.edu',
     license='MIT',
-    url='http://github.com/gregjurman/tw2.qrcode',
+    url='http://github.com/toscawidgets/tw2.qrcode',
     install_requires=[
         "tw2.core>=2.0b2",
         "tw2.jquery",
